@@ -159,5 +159,11 @@ int main() {
         std::cout << row << '\n';
     }
 
+    std::cout << "\nPress Enter to exit...";
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::cin.get();
+
+    return 0;
+
     return 0;
 }
