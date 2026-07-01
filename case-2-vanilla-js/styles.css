@@ -1,0 +1,110 @@
+:root {
+    --bg-gradient: linear-gradient(135deg, #143d59, #1f6e8c, #e6d5b8);
+    --card-bg: rgba(255, 255, 255, 0.12);
+    --text-main: #f9f7f0;
+    --button-gradient: linear-gradient(135deg, #fff7ad, #ffa24c);
+    --button-disabled: linear-gradient(135deg, #bdbdbd, #8f8f8f);
+    --shadow: 0 18px 45px rgba(0, 0, 0, 0.25);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--bg-gradient);
+    color: var(--text-main);
+}
+
+.counter-app {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+}
+
+.counter-card {
+    width: min(420px, 100%);
+    padding: 32px;
+    border-radius: 24px;
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    box-shadow: var(--shadow);
+    text-align: center;
+}
+
+.eyebrow {
+    margin: 0 0 8px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    opacity: 0.8;
+}
+
+h1 {
+    margin: 0 0 20px;
+    font-size: 2rem;
+}
+
+.result {
+    min-height: 96px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    display: grid;
+    place-items: center;
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    font-weight: 700;
+    color: #16213e;
+    transition: background-color 0.25s ease, transform 0.2s ease;
+}
+
+.result-positive {
+    background: #f4dd4f;
+}
+
+.result-negative {
+    background: #93d76b;
+}
+
+.result-zero {
+    background: #ff6b6b;
+}
+
+.button-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+button {
+    border: none;
+    border-radius: 5px;
+    padding: 14px 18px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    background: var(--button-gradient);
+    color: #1b1b1b;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.18);
+    transition: transform 0.15s ease, opacity 0.2s ease;
+}
+
+button:hover:not(:disabled) {
+    transform: translateY(-2px);
+}
+
+button:disabled {
+    cursor: not-allowed;
+    background: var(--button-disabled);
+    opacity: 0.75;
+}
+
+.message {
+    min-height: 28px;
+    margin-top: 18px;
+    font-size: 1rem;
+    font-weight: 600;
+}

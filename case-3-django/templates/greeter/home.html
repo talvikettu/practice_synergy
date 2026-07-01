@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django Greeting App</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <main class="page">
+        <section class="card">
+            <p class="eyebrow">Case Task 3</p>
+            <h1>Персональное приветствие</h1>
+            <p class="lead">Введите имя, сохраните его в базе и получите приветствие на главной странице.</p>
+
+            <form method="post" class="greeting-form" novalidate>
+                {% csrf_token %}
+                <label for="{{ form.name.id_for_label }}">Имя</label>
+                {{ form.name }}
+                {% if form.name.errors %}
+                    <div class="error-box">{{ form.name.errors|join:", " }}</div>
+                {% endif %}
+                <button type="submit">Submit</button>
+            </form>
+
+            {% if greeting_name %}
+                <section class="greeting-box">
+                    <h2>Здравствуйте, {{ greeting_name }}!</h2>
+                    <p>Ваше имя успешно сохранено в базе данных.</p>
+                </section>
+            {% endif %}
+
+            <section class="history">
+                <h2>Последние посетители</h2>
+                {% if latest_visitors %}
+                    <ul>
+                        {% for visitor in latest_visitors %}
+                            <li>{{ visitor.name }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>Пока никто не оставил своё имя.</p>
+                {% endif %}
+            </section>
+        </section>
+    </main>
+</body>
+</html>
